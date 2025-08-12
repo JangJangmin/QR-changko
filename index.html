@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no, address=no, email=no">
   <title>송금 계좌 | 새마을금고 김은석</title>
   <meta name="theme-color" content="#0B0F14">
   <style>
@@ -20,43 +21,28 @@
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Pretendard,Malgun Gothic,sans-serif;display:flex}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Apple SD Gothic Neo,Pretendard,Malgun Gothic,sans-serif;display:flex;-webkit-text-size-adjust:100%}
     .wrap{margin:auto;max-width:960px;width:100%;padding:24px}
-    .panel{
-      position:relative;
-      background:var(--panel);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      box-shadow:0 10px 28px rgba(0,0,0,.25);
-      padding:28px;
-    }
-    .title{font-size:28px;font-weight:900;margin:0 0 18px;letter-spacing:-.2px}
-    .brand{
-      position:absolute; top:10px; right:22px;
-      width:min(140px, 20vw);
-      height:auto;
-    }
-    .card{
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:14px;
-      padding:18px;
-    }
-    .row{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:10px 4px;
-    }
-    .label{font-size:16px; color:var(--muted);}
-    .value{font-size:24px; font-weight:900; color:var(--accent); letter-spacing:.2px;}
-    .btn{margin-top:10px; width:100%; padding:16px 18px; border:0; border-radius:12px; font-weight:900; font-size:18px; background:var(--btn); color:var(--btn-ink); cursor:pointer;}
+    .panel{position:relative;background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);box-shadow:0 10px 28px rgba(0,0,0,.25);padding:28px}
+    .title{font-size:clamp(20px,3.2vw,28px);font-weight:900;margin:0 0 18px;letter-spacing:-.2px}
+    .brand{position:absolute; top:10px; right:16px; width:min(140px, 28vw); height:auto; pointer-events:none; user-select:none;}
+    .card{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:18px}
+    .row{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 4px}
+    .label{font-size:clamp(13px,2.6vw,16px); color:var(--muted);}
+    .value{font-size:clamp(18px,4.6vw,24px); font-weight:900; color:var(--accent); letter-spacing:.2px;}
+    /* prevent iOS auto-link styling even if injected */
+    a, a:link, a:visited, a:active, a:hover{color:var(--accent); text-decoration:none; pointer-events:none}
+    /* keep account number on one line; shrink responsively */
+    .value-acct{white-space:nowrap; font-feature-settings:'tnum' 1; -webkit-text-size-adjust:100%;}
+    .btn{margin-top:18px; width:100%; padding:16px 18px; border:0; border-radius:12px; font-weight:900; font-size:clamp(16px,4.2vw,18px); background:var(--btn); color:var(--btn-ink); cursor:pointer}
     .btn:active{transform:translateY(1px)}
-    .hint{margin-top:12px; font-size:13px; color:var(--muted); text-align:center;}
+    .hint{margin-top:12px; font-size:12px; color:var(--muted); text-align:center;}
     .footer{margin-top:16px; font-size:12px; color:var(--muted); text-align:center;}
 
-    @media (max-width: 520px){
-      .title{font-size:22px}
-      .brand{width:160px}
-      .value{font-size:20px}
+    @media (max-width: 420px){
+      .wrap{padding:16px}
+      .panel{padding:20px}
+      .card{padding:14px}
     }
   </style>
 </head>
@@ -68,11 +54,11 @@
       <div class="card" role="group" aria-label="송금 정보">
         <div class="row">
           <span class="label">은행</span>
-          <span class="value">새마을금고</span>
+          <span class="value" style="font-weight:900">새마을금고</span>
         </div>
         <div class="row">
           <span class="label">계좌번호</span>
-          <span class="value">9003-2397-3866-7</span>
+          <span class="value value-acct">9003-2397-3866-7</span>
         </div>
         <div class="row">
           <span class="label">예금주</span>
